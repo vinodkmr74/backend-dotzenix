@@ -64,3 +64,63 @@ class Slider(models.Model):
 
     def __str__(self):
         return self.text    
+# ...................title-text-heddind..............
+class HeddingSunhedding(models.Model):
+    hedding = models.TextField(max_length=255, blank=True)
+    subhedding= models.TextField(max_length=255,blank=True)
+
+    def __str__(self):
+        return self.hedding
+    
+    # ...................our service card..............
+class OurServiceCard(models.Model):
+        iconpath = models.CharField(max_length=255, blank=True)
+        title = models.CharField(max_length=255,blank=True)
+        def __str__(self):
+            return self.title
+        
+class OurServiceSubitemCard(models.Model):
+        service = models.ForeignKey(
+            OurServiceCard,
+            on_delete=models.CASCADE,
+            related_name="subitems"   
+        )
+        subitem = models.CharField(max_length=255,blank=True)
+        def __str__(self):
+            return self.subitem
+# ...................product card home.................
+
+class ProductCard(models.Model):
+    image = models.CharField(max_length=255,blank=True)
+    title = models.CharField(max_length=255,blank=True)
+    path = models.CharField(max_length=255,blank=True)
+    def __str__(self):
+        return self.title
+    
+#    ............MissionVisioncard.............
+class MissionVission(models.Model):
+    heading = models.CharField(max_length=255,blank=True)
+    image = models.CharField(max_length=255,blank=True)
+    title =models.CharField(max_length=255,blank=True)
+    subtext = models.CharField(max_length=255, blank=True)
+    def __str__(self):
+        return self.title
+    
+# ...............  Satisfied..............
+
+class Satisfied(models.Model):
+    text = models.CharField(max_length=255, blank=True)
+    number = models.IntegerField()
+    
+# ..........Our Expertise...........
+class OurExpertise(models.Model):
+    image = models.CharField(max_length=255,blank=True)
+    tital = models.CharField(max_length=225,blank=True)
+    text = models.CharField(max_length=255, blank= True)
+    buttonlink = models.CharField(max_length=255,blank=True)
+    # ............Explore Our...........
+class ExploreOur(models.Model):
+    image = models.CharField(max_length=255,blank=True)
+    tital = models.CharField(max_length=225,blank=True)
+    text = models.TextField(blank=True)
+    
